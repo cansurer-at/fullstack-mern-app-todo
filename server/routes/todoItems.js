@@ -18,7 +18,16 @@ router.post("/api/item", async (req, res) => {
   }
 });
 
+//lets create second route -- to get data from databse
 
+router.get("/api/items", async (req, res) => {
+  try {
+    const AllTodoItems = await todoItemsModel.find({});
+    res.status(200).json(AllTodoItems);
+  } catch (err) {
+    res.json(err);
+  }
+});
 
 //export router
-module.exports = router 
+module.exports = router;
